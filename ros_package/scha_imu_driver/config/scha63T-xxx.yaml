@@ -1,0 +1,3 @@
+scha_imu_node:
+ device_: "/dev/ttyACM1"
+ topic_name_imu_: "/imu/63T_xxx/data_raw"

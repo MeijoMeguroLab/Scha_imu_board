@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+
+  <group ns="scha634_xxx">
+    <rosparam command="load" file="$(find scha_imu_driver)/config/scha634-xxx.yaml"/>
+    <node pkg="scha_imu_driver" name="scha_imu_node" type="scha_imu_node" />
+  </group>
+
+</launch>
