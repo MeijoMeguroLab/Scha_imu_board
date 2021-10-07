@@ -25,6 +25,7 @@
 
 #include "ros/ros.h"
 #include "sensor_msgs/Imu.h"
+#include "std_msgs/Float64.h"
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -194,9 +195,11 @@ public:
   logger target;
   ros::NodeHandle node_handle_;
   ros::Publisher sensor_data_pub_;
+  ros::Publisher imu_temp_publisher_;
 
   std::string device_;
   std::string topic_name_imu_;
+  std::string topic_name_imu_temp;
 
   explicit LoggerNode(ros::NodeHandle nh)
     : node_handle_(nh)
@@ -204,15 +207,19 @@ public:
     // Read parameters
     const std::string device_key = ros::this_node::getName() + std::string("/device_");
     const std::string topic_key = ros::this_node::getName() + std::string("/topic_name_imu_");
+    const std::string topic_key_temp = ros::this_node::getName() + std::string("/topic_name_imu_temp");
 
     node_handle_.param(device_key, device_, std::string("/dev/ttyACM0"));
     node_handle_.param(topic_key, topic_name_imu_, std::string("/imu/data_raw"));
+    node_handle_.param(topic_key_temp, topic_name_imu_temp, std::string("/imu/temp"));
 
     ROS_INFO("device: %s", device_.c_str());
     ROS_INFO("topic: %s", topic_name_imu_.c_str());
+    ROS_INFO("topic: %s", topic_name_imu_temp.c_str());
 
     // Data publisher
     sensor_data_pub_ = node_handle_.advertise<sensor_msgs::Imu>(topic_name_imu_, 100);
+    imu_temp_publisher_ = node_handle_.advertise<std_msgs::Float64>(topic_name_imu_temp, 100);
   }
 
   ~LoggerNode()
@@ -244,6 +251,7 @@ public:
   void publish_imu_data()
   {
     sensor_msgs::Imu data;
+    std_msgs::Float64 ImuTempMsg;
     data.header.frame_id = "imu";
     data.header.stamp = ros::Time::now();
 
@@ -260,7 +268,10 @@ public:
     data.orientation.z = 0;
     data.orientation.w = 1;
 
+    ImuTempMsg.data = imu_temp;
+
     sensor_data_pub_.publish(data);
+    imu_temp_publisher_.publish(ImuTempMsg);
   }
 
 
