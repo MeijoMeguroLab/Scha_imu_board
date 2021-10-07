@@ -1,6 +1,10 @@
 // Copyright (c) 2021, MeijoMeguroLab
 // All rights reserved.
 //
+// This software is based in part on the source code available for download from
+// https://www.murata.com/ja-jp/products/sensor/gyro/overview/lineup/scha63t/form
+// The copyright of the quoted material is held by Murata Electronics Oy.
+//
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are met:
 // * Redistributions of source code must retain the above copyright notice,
@@ -22,12 +26,7 @@
 // ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-//
-// This software is based in part on the source code available for download from
-//
-// https://www.murata.com/ja-jp/products/sensor/gyro/overview/lineup/scha63t/form
-// 
-// The copyright of the quoted material is held by Murata Electronics Oy.
+
 
 #include <SCHA.h>
 #include <SPI.h>
