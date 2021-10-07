@@ -1,3 +1,4 @@
 scha_imu_node:
  device_: "/dev/ttyACM0"
  topic_name_imu_: "/imu/634_xxx/data_raw"
+ topic_name_imu_temp: "/imu/634_xxx/temperature"
