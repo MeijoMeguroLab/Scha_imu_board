@@ -62,5 +62,5 @@ Connect the device to your PC, and edit the device in the .yaml file in "ros_pac
 4.
 Run the appropriate launch for your device from "ros_package/scha_imu_driver/launch".
 
-
-
+## License
+scha_imu_board is provided under the BSD 3-Clause License.
